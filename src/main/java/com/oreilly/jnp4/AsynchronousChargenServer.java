@@ -1,15 +1,17 @@
 package com.oreilly.jnp4;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.concurrent.Future;
 
+// FIXME!!
 public class AsynchronousChargenServer {
 
     public static int DEFAULT_PORT = 19;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         int port;
         try {
@@ -33,8 +35,8 @@ public class AsynchronousChargenServer {
             Future<AsynchronousSocketChannel> future = serverChannel.accept();
             AsynchronousSocketChannel channel = future.get();
 
-            channel.w
-
+            // channel.w
+/**
 
             ServerSocketChannel server = (ServerSocketChannel) key.channel();
             SocketChannel client = server.accept();
@@ -48,7 +50,7 @@ public class AsynchronousChargenServer {
             buffer.put((byte) '\n');
             buffer.flip();
             key2.attach(buffer);
-        }else if (key.isWritable()) {
+        } else if (key.isWritable()) {
             SocketChannel client = (SocketChannel) key.channel();
             ByteBuffer buffer = (ByteBuffer) key.attachment();
             if (!buffer.hasRemaining()) {
@@ -69,6 +71,7 @@ public class AsynchronousChargenServer {
                 buffer.flip();
             }
             client.write(buffer);
+*/          break; // TODO remove
         }
     }
 }
